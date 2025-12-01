@@ -1,228 +1,34 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <link rel="preload" href="serial.txt" as="fetch" crossorigin="anonymous">
-
-    <meta charset="UTF-8" />
-    <title>NetDiagTool v3 - Diagnostic réseau & ports</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-        * { box-sizing: border-box; }
-        body {
-            margin: 0;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background: linear-gradient(135deg, #0f172a, #020617);
-            color: #e5e7eb;
-        }
-        header {
-            padding: 24px 32px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 22px;
-            letter-spacing: 0.05em;
-        }
-        header span {
-            font-size: 12px;
-            color: #9ca3af;
-        }
-        main {
-            max-width: 960px;
-            margin: 40px auto 60px;
-            padding: 0 16px;
-        }
-        .card {
-            background: rgba(15, 23, 42, 0.95);
-            border-radius: 18px;
-            padding: 32px 28px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.45);
-            border: 1px solid rgba(148, 163, 184, 0.3);
-        }
-        .title {
-            font-size: 28px;
-            margin-bottom: 8px;
-        }
-        .subtitle {
-            font-size: 15px;
-            color: #9ca3af;
-            margin-bottom: 24px;
-        }
-        .pill {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 999px;
-            font-size: 11px;
-            background: rgba(34, 197, 94, 0.1);
-            color: #4ade80;
-            border: 1px solid rgba(34, 197, 94, 0.4);
-            margin-bottom: 12px;
-        }
-        .columns {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 24px;
-        }
-        .col {
-            flex: 1 1 260px;
-        }
-        ul.features {
-            list-style: none;
-            padding-left: 0;
-            margin: 0 0 18px 0;
-            font-size: 14px;
-        }
-        ul.features li {
-            margin-bottom: 8px;
-            display: flex;
-            align-items: flex-start;
-            gap: 6px;
-        }
-        ul.features li span.icon {
-            font-size: 16px;
-            margin-top: 1px;
-        }
-        .download-block {
-            margin-top: 8px;
-        }
-        a.btn-primary {
-            display: inline-block;
-            padding: 12px 24px;
-            border-radius: 999px;
-            background: #3b82f6;
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 15px;
-            box-shadow: 0 10px 30px rgba(59,130,246,0.4);
-            transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
-        }
-        a.btn-primary:hover {
-            background: #2563eb;
-            transform: translateY(-1px);
-            box-shadow: 0 16px 40px rgba(37,99,235,0.5);
-        }
-        .file-size {
-            font-size: 12px;
-            color: #9ca3af;
-            margin-top: 6px;
-        }
-        .author {
-            font-size: 13px;
-            color: #9ca3af;
-            margin-top: 18px;
-        }
-        .author strong {
-            color: #e5e7eb;
-        }
-        .paypal {
-            margin-top: 22px;
-            padding-top: 16px;
-            border-top: 1px dashed rgba(148,163,184,0.4);
-            font-size: 13px;
-            color: #9ca3af;
-        }
-        .paypal span {
-            display: inline-block;
-            margin-bottom: 6px;
-        }
-        .paypal small {
-            display: block;
-            font-size: 11px;
-            color: #6b7280;
-        }
-        footer {
-            text-align: center;
-            font-size: 12px;
-            color: #6b7280;
-            margin-bottom: 24px;
-        }
-        @media (max-width: 640px) {
-            main { margin-top: 20px; }
-            .card { padding: 24px 20px; }
-            .title { font-size: 22px; }
-        }
-    </style>
-</head>
-<body>
-
-<header>
-    <div>
-        <h1>NetDiagTool</h1>
-        <span>Outil de diagnostic réseau pour techniciens</span>
+<div class="download-block">
+    <!-- Lien vers ton ZIP -->
+    <a class="btn-primary" href="net6.0-windows.rar" download>
+        Télécharger NetDiagTool v3
+    </a>
+    <div class="file-size">
+        (Archive ZIP contenant l’exécutable et les fichiers du projet)
     </div>
-</header>
 
-<main>
-    <section class="card">
-        <div class="pill">Version 3 – Diagnostic réseau & ports TCP</div>
-        <h2 class="title">Diagnostiquer un réseau Windows en quelques secondes</h2>
-        <p class="subtitle">
-            NetDiagTool v3 réalise un diagnostic rapide : configuration IP locale, passerelle, DNS, tests de ping
-            et résolution de noms, puis permet de tester l’ouverture de ports TCP (RDP, HTTP, SMB, SQL, etc.)
-            sur n’importe quelle adresse IP.
-        </p>
-
-        <div class="columns">
-            <div class="col">
-                <h3 style="font-size:15px;margin-bottom:8px;">Fonctionnalités principales</h3>
-                <ul class="features">
-                    <li><span class="icon">✅</span><span>Lecture des interfaces réseau (IPv4, masque, passerelle, DNS).</span></li>
-                    <li><span class="icon">✅</span><span>Tests de connectivité : passerelle, 8.8.8.8, <code>google.com</code>.</span></li>
-                    <li><span class="icon">✅</span><span>Tests DNS : résolution de <code>microsoft.com</code> et <code>google.com</code>.</span></li>
-                    <li><span class="icon">✅</span><span>Colonne dédiée au test de ports TCP : SSH, RDP, HTTP/HTTPS, SMB, SQL, etc.</span></li>
-                    <li><span class="icon">✅</span><span>Licence par clé de série pour contrôler la diffusion de l’outil.</span></li>
-                </ul>
-
-                <div class="download-block">
-                    <!-- Lien vers ton ZIP dans le repo/render -->
-                    <a class="btn-primary" href="net6.0-windows.rar" download>
-                        Télécharger NetDiagTool v3
-                    </a>
-                    <div class="file-size">
-                        (Archive ZIP contenant l’exécutable et les fichiers du projet)
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <h3 style="font-size:15px;margin-bottom:8px;">Usage type</h3>
-                <ul class="features">
-                    <li><span class="icon">🖥️</span><span>Techniciens support / admins systèmes en intervention.</span></li>
-                    <li><span class="icon">🏫</span><span>Audit rapide d’un poste ou serveur dans un établissement, collectivité, PME.</span></li>
-                    <li><span class="icon">🧪</span><span>Vérification de ports RDP/SMB/SQL ouverts pour le dépannage.</span></li>
-                </ul>
-
-                <div class="author">
-                    Développé par <strong>Soufiane Mansour</strong><br />
-                    Administrateur systèmes & réseaux – NetDiagTool v3 (2025).
-                </div>
-
-               <div class="paypal">
-    <span>💙 Soutenir le projet (optionnel)</span>
-    <small>
-        Merci pour votre soutien. Votre contribution est facultative :  
-        l’outil reste totalement gratuit.
-    </small>
-
-    <div style="margin-top:10px; text-align:left;">
-        <a href="https://www.paypal.com/donate/?hosted_button_id=T9DK4J66CX9SS" target="_blank">
-            <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" 
-                 alt="Donate with PayPal button">
-        </a>
-    </div>
+    <!-- 🔥 Tableau d'informations avec le code de série -->
+    <table style="
+        margin-top:15px;
+        width:100%;
+        border-collapse:collapse;
+        background:rgba(30,41,59,0.6);
+        border:1px solid rgba(148,163,184,0.3);
+        border-radius:10px;
+        overflow:hidden;
+        font-size:14px;
+        ">
+        <tr style="background:rgba(51,65,85,0.6);">
+            <th style="padding:10px; text-align:left; color:#e5e7eb;">Information</th>
+            <th style="padding:10px; text-align:left; color:#e5e7eb;">Valeur</th>
+        </tr>
+        <tr>
+            <td style="padding:10px; border-top:1px solid rgba(148,163,184,0.2); color:#9ca3af;">
+                🔑 Code de série
+            </td>
+            <td style="padding:10px; border-top:1px solid rgba(148,163,184,0.2); color:#4ade80; font-weight:600;">
+                NET-2025-XYZ-1234
+            </td>
+        </tr>
+    </table>
 </div>
-
-        </div>
-    </section>
-</main>
-
-<footer>
-    © 2025 Soufiane Mansour – Tous droits réservés.  
-    NetDiagTool est fourni en l’état, sans garantie. Usage professionnel recommandé.
-</footer>
-
-</body>
-</html>
